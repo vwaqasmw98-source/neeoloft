@@ -17,7 +17,7 @@ export function FaqSection() {
             <HelpCircle className="h-3.5 w-3.5 text-brand-500" /> FAQ
           </div>
           <h2 className="mt-4 section-title">
-            Questions, <span className="gradient-text">answered.</span>
+            Frequently <span className="gradient-text">Asked</span> Questions
           </h2>
           <p className="mt-3 section-sub">
             Quick answers to what we get asked most. Don&apos;t see yours? Ask Aria in the chat.
