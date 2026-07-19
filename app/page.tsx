@@ -29,20 +29,20 @@ export default function HomePage() {
   );
 }
 
-function LogoCloudSection() {
-  return (
-    <section className="py-10">
-      <div className="container-x">
-        <p className="text-center text-xs uppercase tracking-widest text-slate-500">
-          Trusted by ambitious teams
-        </p>
-        <div className="mt-6">
-          <LogoCloud />
-        </div>
-      </div>
-    </section>
-  );
-}
+// function LogoCloudSection() {
+//   return (
+//     <section className="py-10">
+//       <div className="container-x">
+//         <p className="text-center text-xs uppercase tracking-widest text-slate-500">
+//           Trusted by ambitious teams
+//         </p>
+//         <div className="mt-6">
+//           <LogoCloud />
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 function ServicesPreview() {
   const featured = FEATURED_IDS.map((id) => SERVICES.find((s) => s.id === id)).filter(Boolean) as typeof SERVICES;
