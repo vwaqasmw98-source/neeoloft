@@ -10,10 +10,10 @@ import { cn } from '@/lib/utils';
 
 const LINKS = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/pricing', label: 'Pricing' },
+  { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -50,8 +50,8 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Link href="/quote" className="hidden sm:inline-flex btn-primary !py-2 !text-xs">
-            Get A Quote
+          <Link href="/book" className="hidden sm:inline-flex btn-primary !py-2 !text-xs">
+            Book a call
           </Link>
           <button
             onClick={() => setOpen((o) => !o)}
