@@ -19,7 +19,7 @@ export default function HomePage() {
     <>
       <Hero />
       <Stats />
-      <LogoCloudSection />
+      {/* <LogoCloudSection /> */}
       <ServicesPreview />
       <ProcessSection />
       <TestimonialsSection />
