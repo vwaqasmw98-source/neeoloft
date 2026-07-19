@@ -16,7 +16,7 @@
     --bg-soft: 13 19 38;
     --fg: 226 232 240;
     --muted: 148 163 184;
-    --border: 30 41 59;
+     --border: rgba(148, 163, 184, 0.12);
   }
 
   html {
@@ -39,6 +39,21 @@
   .container-x {
     @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
   }
+
+  .glass {
+    @apply backdrop-blur-xl border;
+    background: var(--card);
+    border-color: var(--border);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5
+      text-sm font-semibold text-white shadow-glow transition-all
+      hover:scale-[1.02] hover:shadow-[0_0_60px_-10px_rgba(58,92,255,0.7)]
+      active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-brand-400;
+    background-image: var(--gradient);
+  }
+
 
   .section {
     @apply py-20 sm:py-24 lg:py-32;
@@ -64,7 +79,10 @@
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 transition-all hover:bg-slate-50 dark:hover:bg-slate-900 active:scale-[0.98];
   }
-
+.btn-ghost:hover {
+    border-color: rgba(58, 92, 255, 0.5);
+    color: #3a5cff;
+  }
   .card {
     @apply rounded-2xl border border-slate-200/70 dark:border-slate-800 bg-white/80 dark:bg-slate-900/60 backdrop-blur p-6 shadow-card transition-all;
   }

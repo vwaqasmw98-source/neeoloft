@@ -111,8 +111,8 @@ export function Navbar() {
                 <Link href="/login" className="hidden sm:inline-flex btn-ghost !py-2 !px-3 !text-xs">
                   <LogIn className="h-3.5 w-3.5" /> Sign in
                 </Link>
-                <Link href="/contact" className="hidden sm:inline-flex btn-primary !py-2 !px-4 !text-xs">
-                  Book a Demo
+                <Link href="/quote" className="hidden sm:inline-flex btn-primary !py-2 !px-4 !text-xs">
+                  Get a Quote
                 </Link>
               </>
             )}
