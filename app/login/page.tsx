@@ -1,16 +1,38 @@
 'use client';
 
 import { useState } from 'react';
-import { signIn } from 'next-auth/react';
+import { signIn, getSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Loader2, Mail, Lock, Sparkles } from 'lucide-react';
 import toast from 'react-hot-toast';
 
+/**
+ * Decide where to send the user after a successful sign-in.
+ *
+ * Rules:
+ *  - If a callbackUrl is provided AND it points to the role's own area, honor it.
+ *  - Otherwise admins go to /admin, members go to /dashboard.
+ *  - If the callbackUrl is from the OTHER role's area, override it.
+ */
+function resolveRedirect(callbackUrl: string | null, role: string | undefined): string {
+  const fallback = role === 'admin' ? '/admin' : '/dashboard';
+  if (!callbackUrl) return fallback;
+  // Only allow same-origin relative paths.
+  if (!callbackUrl.startsWith('/') || callbackUrl.startsWith('//')) return fallback;
+  if (role === 'admin') {
+    // Admins may freely visit /admin and other public pages.
+    return callbackUrl;
+  }
+  // Members: if they were sent to /admin (e.g. via /admin link), bounce to /dashboard.
+  if (callbackUrl.startsWith('/admin')) return '/dashboard';
+  return callbackUrl;
+}
+
 export default function LoginPage() {
   const router = useRouter();
   const params = useSearchParams();
-  const callbackUrl = params.get('callbackUrl') || '/admin';
+  const callbackUrl = params.get('callbackUrl');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -26,8 +48,11 @@ export default function LoginPage() {
         redirect: false,
       });
       if (r?.error) throw new Error('Invalid email or password');
+      const session = await getSession();
+      const role = session?.user?.role;
+      const target = resolveRedirect(callbackUrl, role);
       toast.success('Welcome back!');
-      router.push(callbackUrl);
+      router.push(target);
     } catch (err: any) {
       toast.error(err?.message || 'Login failed');
     } finally {
@@ -75,7 +100,16 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <button type="submit" disabled={loading} className="btn-primary w-full mt-5 !py-2.5">
+        <div className="mt-2 flex justify-end">
+          <Link
+            href="/forgot-password"
+            className="text-xs text-slate-500 hover:text-brand-500 transition-colors"
+          >
+            Forgot password?
+          </Link>
+        </div>
+
+        <button type="submit" disabled={loading} className="btn-primary w-full mt-4 !py-2.5">
           {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Sign in'}
         </button>
 

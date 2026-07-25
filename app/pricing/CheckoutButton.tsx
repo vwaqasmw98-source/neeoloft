@@ -34,12 +34,21 @@ export default function CheckoutButton({ planId, cycle, variant = 'primary', chi
         const err = await res.json().catch(() => ({}));
         throw new Error(err.error || 'Checkout failed');
       }
+      // const data = await res.json();
+      // if (data.url) {
+      //   window.location.href = data.url;
+      // } else {
+      //   throw new Error('No checkout URL returned');
+      // }
+
       const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error('No checkout URL returned');
-      }
+
+if (data.success) {
+  toast.success('Demo payment successful!');
+  router.push(data.redirect || '/billing');
+} else {
+  throw new Error(data.error || 'Payment failed');
+}
     } catch (err) {
       const e = err as Error;
       toast.error(e.message);

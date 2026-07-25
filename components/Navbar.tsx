@@ -95,8 +95,12 @@ export function Navbar() {
             <ThemeToggle />
             {status === 'authenticated' ? (
               <div className="hidden sm:flex items-center gap-1">
-                <Link href="/admin" className="btn-ghost !py-2 !px-3 !text-xs">
-                  <LayoutDashboard className="h-3.5 w-3.5" /> Dashboard
+                <Link
+                  href={session.user?.role === 'admin' ? '/admin' : '/dashboard'}
+                  className="btn-ghost !py-2 !px-3 !text-xs"
+                >
+                  <LayoutDashboard className="h-3.5 w-3.5" />{' '}
+                  {session.user?.role === 'admin' ? 'Admin' : 'Dashboard'}
                 </Link>
                 <button
                   onClick={() => signOut({ callbackUrl: '/' })}
@@ -154,8 +158,11 @@ export function Navbar() {
                 {status === 'authenticated' ? (
                   <>
                     <li>
-                      <Link href="/admin" className="block rounded-xl px-3 py-2 text-sm font-medium hover:bg-black/5 dark:hover:bg-white/5">
-                        Dashboard
+                      <Link
+                        href={session.user?.role === 'admin' ? '/admin' : '/dashboard'}
+                        className="block rounded-xl px-3 py-2 text-sm font-medium hover:bg-black/5 dark:hover:bg-white/5"
+                      >
+                        {session.user?.role === 'admin' ? 'Admin' : 'Dashboard'}
                       </Link>
                     </li>
                     <li>

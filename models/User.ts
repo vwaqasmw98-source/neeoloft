@@ -9,6 +9,9 @@ const UserSchema = new Schema(
     workspaceId: { type: String, index: true },
     emailVerified: { type: Boolean, default: false },
     lastLoginAt: { type: Date },
+    phone: { type: String, trim: true },
+    address: { type: String, trim: true },
+    image: { type: String, trim: true },
   },
   { timestamps: true }
 );

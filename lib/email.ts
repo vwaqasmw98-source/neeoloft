@@ -71,3 +71,32 @@ export function leadEmailTemplate(input: {
       </div>`,
   };
 }
+
+export function passwordResetEmailTemplate(input: {
+  name?: string;
+  resetUrl: string;
+}): { subject: string; html: string } {
+  const greeting = input.name ? `Hi ${input.name},` : 'Hi there,';
+  return {
+    subject: 'Reset your Neeoloft password',
+    html: `
+      <div style="font-family:system-ui,sans-serif;max-width:600px;margin:auto;padding:24px;background:#f8fafc;border-radius:12px">
+        <div style="background:linear-gradient(135deg,#3a5cff,#22d3ee);padding:24px;border-radius:8px;color:white">
+          <h1 style="margin:0;font-size:22px">Reset your password 🔒</h1>
+        </div>
+        <div style="padding:24px;background:white;border-radius:8px;margin-top:16px;color:#0f172a">
+          <p>${greeting}</p>
+          <p>We received a request to reset your Neeoloft account password. Click the button below to choose a new one.</p>
+          <p style="text-align:center;margin:28px 0">
+            <a href="${input.resetUrl}" style="display:inline-block;background:linear-gradient(135deg,#3a5cff,#22d3ee);color:white;text-decoration:none;padding:12px 28px;border-radius:999px;font-weight:600;font-size:14px">Reset password</a>
+          </p>
+          <p style="color:#475569;font-size:13px">Or paste this link into your browser:</p>
+          <p style="word-break:break-all;background:#f1f5f9;padding:12px;border-radius:8px;font-size:12px;color:#334155">${input.resetUrl}</p>
+          <p style="color:#64748b;font-size:12px;margin-top:24px">
+            <strong>This link expires in 1 hour.</strong><br>
+            If you didn't request a password reset, you can safely ignore this email — your password will remain unchanged.
+          </p>
+        </div>
+      </div>`,
+  };
+}

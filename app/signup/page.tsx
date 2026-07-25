@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { signIn } from 'next-auth/react';
+import { signIn, getSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Loader2, Mail, Lock, User as UserIcon, Sparkles } from 'lucide-react';
@@ -30,7 +30,12 @@ export default function SignupPage() {
       toast.success('Account created!');
       // Auto-login
       await signIn('credentials', { email, password, redirect: false });
-      router.push('/admin');
+      // New signups are always 'member' (unless they happen to be the very first user,
+      // which the register route promotes to 'admin' on its own). Read the session
+      // and route based on the role the server actually assigned.
+      const session = await getSession();
+      const role = session?.user?.role;
+      router.push(role === 'admin' ? '/admin' : '/dashboard');
     } catch (err: any) {
       toast.error(err?.message || 'Signup failed');
     } finally {

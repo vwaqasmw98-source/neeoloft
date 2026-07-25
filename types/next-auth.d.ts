@@ -10,12 +10,15 @@ declare module 'next-auth' {
       image?: string | null;
       role?: string;
       workspaceId?: string;
+      phone?: string;
     };
   }
   interface User {
     id: string;
     role?: string;
     workspaceId?: string;
+    phone?: string;
+    image?: string;
   }
 }
 
@@ -23,5 +26,7 @@ declare module 'next-auth/jwt' {
   interface JWT {
     role?: string;
     workspaceId?: string;
+    phone?: string;
+    image?: string;
   }
 }

@@ -100,7 +100,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="section">
+      {/* <section className="section">
         <div className="container-x">
           <div className="card p-8 sm:p-12 bg-brand-gradient text-white">
             <div className="grid gap-6 lg:grid-cols-2 items-center">
@@ -136,7 +136,7 @@ export default function ServicesPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <CTA />
     </>

@@ -137,7 +137,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="section">
+      {/* <section className="section">
         <div className="container-x text-center">
           <h2 className="font-display text-2xl sm:text-3xl font-bold">Want results like these?</h2>
           <p className="mt-2 text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
@@ -145,7 +145,7 @@ export default function PortfolioPage() {
             recommend the highest-ROI next step.
           </p>
         </div>
-      </section>
+      </section> */}
 
       <CTA />
     </>
