@@ -1,0 +1,52 @@
+{
+  "name": "neeoloft",
+  "version": "1.3.0",
+  "private": true,
+  "description": "Neeoloft – AI-first web & automation agency platform. Built with Next.js, Tailwind, Groq LLM, MongoDB, Stripe, NextAuth, WhatsApp & Email automation.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed": "node scripts/seed.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@next-auth/mongodb-adapter": "^1.1.3",
+    "@stripe/stripe-js": "^4.5.0",
+    "axios": "^1.7.2",
+    "bcryptjs": "^2.4.3",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.11.17",
+    "groq-sdk": "^0.7.0",
+    "lucide-react": "^0.424.0",
+    "mongoose": "^8.5.1",
+    "next": "14.2.5",
+    "next-auth": "^4.24.7",
+    "nodemailer": "^7.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.2.1",
+    "stripe": "^16.8.0",
+    "styled-components": "^6.4.4",
+    "tailwind-merge": "^2.4.0",
+    "twilio": "^5.3.0",
+    "uuid": "^10.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.14.13",
+    "@types/nodemailer": "^6.4.15",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/uuid": "^10.0.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8.4.40",
+    "tailwindcss": "^3.4.7",
+    "typescript": "^5.5.4"
+  }
+}
